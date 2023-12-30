@@ -39,13 +39,13 @@ This dataset dates from 1988 and consists of four databases: Cleveland, Hungary,
 Primary objective of this project is to find the best classification algorithm for our dataset. I have listed below the classifiers I have tried in this project. In the context of our medical application, the goal is to develop a robust and accurate model that minimizes both false positives and false negatives. Achieving high sensitivity is crucial to ensure the identification of all positive cases, minimizing the risk of missing critical instances. Simultaneously, precision is of utmost importance to reduce the repercussions of false positives, especially in scenarios where misclassifications could have severe consequences. The project aims to strike a balance between precision and recall, acknowledging the inherent trade-off between the two. The precision-recall trade-off is a key consideration, as increasing sensitivity often comes at the cost of reduced precision and vice versa. The choice of the appropriate threshold for classification will be critical in optimizing the model's performance based on the specific needs of our medical task. Our evaluation metrics, including sensitivity, specificity, precision, recall, F1 score, and ROC-AUC, will guide the assessment of the model's effectiveness in achieving these objectives.
 
 ### Algorithms Implemented
-- Logistic Regression
-- Naive Bayes Classifier
 - Decision Tree
+- K-Nearest Neighbor
+- Logistic Regression
+- Linear Discriminant Analysis
+- Naive Bayes Classifier
 - Random Forest
 - Support Vector Machine
-- K-Nearest Neighbor
-- Ada Boost
 - XG Boost
 
 ### Reference
