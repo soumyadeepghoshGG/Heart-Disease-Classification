@@ -1,5 +1,13 @@
 # Heart Disease Dataset 
 
+## Installation
+
+To run the project, you'll need to have the following Python packages installed. You can install them using the following command:
+
+```bash
+pip install scikit-learn pandas numpy matplotlib seaborn xgboost
+```
+
 ## About Dataset
 
 ### Context
@@ -48,7 +56,13 @@ Primary objective of this project is to find the best classification algorithm f
 - Support Vector Machine
 - XG Boost
 
-### Reference
+## Reference
 By R. Detrano, A. Jánosi, W. Steinbrunn, M. Pfisterer, J. Schmid, S. Sandhu, K. Guppy, S. Lee, V. Froelicher. 1989<br>
 Published in American Journal of Cardiology.<br>
 [International application of a new probability algorithm for the diagnosis of coronary artery disease.](https://www.semanticscholar.org/paper/International-application-of-a-new-probability-for-Detrano-J%C3%A1nosi/a7d714f8f87bfc41351eb5ae1e5472f0ebbe0574)
+
+## License
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](https://github.com/soumyadeepghoshGG/Heart-Disease-Classification/blob/main/License.txt) file for details.
+
+## Contact
+For questions or issues, please contact me (Soumyadeep Ghosh) via mail: soumyadeepghosh57@gmail.com
