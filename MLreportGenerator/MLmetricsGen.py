@@ -24,7 +24,7 @@ class ModelTrainer:
         self.fitted_models = None  # Store the trained models
 
 
-    def model_name_extractor(self):
+    def _model_name_extractor(self):
         model_name = []
 
         for arg in self.args:
@@ -35,13 +35,13 @@ class ModelTrainer:
         return model_name
 
 
-    def trainTestSplit(self):
+    def _trainTestSplit(self):
         return train_test_split(self.X, self.y, test_size=0.3, random_state=9)
 
 
-    def model_train(self):
+    def _model_train(self):
         if self.fitted_models is None:
-            x_train, _, y_train, _ = self.trainTestSplit()
+            x_train, _, y_train, _ = self._trainTestSplit()
             self.fitted_models = []
 
             for arg in self.args:
@@ -59,9 +59,9 @@ class ModelTrainer:
 class ClassificationModelEvaluator(ModelTrainer):
     # Use this Method to get a DataFrame with training and testing metrics of algorithms used
     def display_classification_metrics(self):
-        x_train, x_test, y_train, y_test = self.trainTestSplit()
-        fitted_models = self.model_train()
-        index = self.model_name_extractor()
+        x_train, x_test, y_train, y_test = self._trainTestSplit()
+        fitted_models = self._model_train()
+        index = self._model_name_extractor()
 
         # Empty DataFrame to store report
         report = pd.DataFrame(columns=['Accuracy', 'Precision', 'Recall', 'F1 Score'])
@@ -90,9 +90,9 @@ class ClassificationModelEvaluator(ModelTrainer):
 
     # Use this Method to get classification report of the algorithms used
     def display_classification_report(self):
-        _, x_test, _, y_test = self.trainTestSplit()
-        fitted_models = self.model_train()
-        index = self.model_name_extractor()
+        _, x_test, _, y_test = self._trainTestSplit()
+        fitted_models = self._model_train()
+        index = self._model_name_extractor()
 
         for name, model in zip(index, fitted_models):
             print(f"Classification Report for {name}:")
@@ -101,9 +101,9 @@ class ClassificationModelEvaluator(ModelTrainer):
     
     # Use this Method for Confusion Matrix of algorithms used
     def show_confusion_matrix(self):
-        _, x_test, _, y_test = self.trainTestSplit()
-        fitted_models = self.model_train()
-        index = self.model_name_extractor()
+        _, x_test, _, y_test = self._trainTestSplit()
+        fitted_models = self._model_train()
+        index = self._model_name_extractor()
 
         for name, model in zip(index, fitted_models):
             conf_matrix = confusion_matrix(y_test, model.predict(x_test))
@@ -119,9 +119,9 @@ class ClassificationModelEvaluator(ModelTrainer):
 
     # Use this method to get ROC curve of algorithms used
     def show_ruc_curve(self):
-        _, x_test, _, y_test = self.trainTestSplit()
-        fitted_models = self.model_train()
-        index = self.model_name_extractor()
+        _, x_test, _, y_test = self._trainTestSplit()
+        fitted_models = self._model_train()
+        index = self._model_name_extractor()
 
         for name, model in zip(index, fitted_models):
             fpr, tpr, _ = roc_curve(y_test, model.predict_proba(x_test)[:, 1])
@@ -142,8 +142,8 @@ class ClassificationModelEvaluator(ModelTrainer):
     # Use this method to get cross validation score for the algorithms used
     def display_cross_validation_report(self, n=10):
         print("CROSS VALIDATION USING F1 SCORES\n\n")
-        fitted_models = self.model_train()
-        index = self.model_name_extractor()
+        fitted_models = self._model_train()
+        index = self._model_name_extractor()
         
         # Empty DataFrame to store scores
         cols = [f"CV{i}" for i in range(1, n+1)]+['CV Mean', 'CV Std Dev']
@@ -174,9 +174,9 @@ class ClassificationModelEvaluator(ModelTrainer):
 class RegressionModelEvaluator(ModelTrainer):
     # Us this method to get an extensive report of model performance
     def display_regression_metrics(self):
-        x_train, x_test, y_train, y_test = self.trainTestSplit()
-        fitted_models = self.model_train()
-        index = self.model_name_extractor()
+        x_train, x_test, y_train, y_test = self._trainTestSplit()
+        fitted_models = self._model_train()
+        index = self._model_name_extractor()
 
         # Empty DataFrame to store report
         report = pd.DataFrame(columns=["Mean Squared Error", "Root Mean Squared Error", "Mean Absolute Error", "Mean Absolute Percentage Error", "R^2 Score"])
