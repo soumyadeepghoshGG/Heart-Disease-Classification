@@ -109,11 +109,14 @@ class ClassificationModelEvaluator(ModelTrainer):
             conf_matrix = confusion_matrix(y_test, model.predict(x_test))
 
             # Generating Heatmap for Confusion Matrix
-            plt.figure(figsize=(10, 7))
-            plt.title(f"Confusion Matrix for {name}", fontdict={"fontweight": "bold", "color": 'k', "fontsize": 14})
-            sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='YlOrBr')
-            plt.xlabel("Predicted Classes", fontdict={"fontsize": 12})
-            plt.ylabel("Actual Classes", fontdict={"fontsize": 12})
+            ax=plt.subplot()
+            sns.heatmap(conf_matrix, annot=True, fmt='d', linewidths=2, linecolor='black', cmap='YlGnBu',ax=ax)
+            ax.set_xlabel("Predicted Classes", fontdict={"fontsize": 12})
+            ax.set_ylabel("Actual Classes", fontdict={"fontsize": 12})
+            ax.set_ylim(2.0,0)
+            ax.set_title(f"Confusion Matrix for {name}", fontdict={"fontweight": "bold", "color": 'k', "fontsize": 14})
+            ax.xaxis.set_ticklabels(['False', 'True'])
+            ax.yaxis.set_ticklabels(['False', 'True'])
             plt.show()
 
 
